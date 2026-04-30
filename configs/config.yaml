@@ -1,0 +1,30 @@
+data:
+  train_path: "data/BREAN_BRCAT.train"
+  train_label_path: "data/BREAN_BRCAT.train.label"
+  test_path: "data/BREAN_BRCAT.test"
+  test_label_path: "data/BREAN_BRCAT.test.label"
+  filter: null
+  corerate: 2
+  random: False
+
+
+model:
+  class_cond: True
+  dropout: 0.0
+  n_layer: 4
+  n_head: 2
+  feature_size: 34
+  
+diffusion:
+  noise_schedule: "cosine"
+  linear_start: 0.0001 
+  linear_end: 0.0195
+  diffusion_steps: 1000
+  log_every_t: 10
+  learn_sigma: False
+
+  
+train:
+  lr: 0.00003
+  batch_size: 32
+  schedule_plot: False

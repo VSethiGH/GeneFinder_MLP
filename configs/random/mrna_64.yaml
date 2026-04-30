@@ -1,0 +1,31 @@
+data:
+  # data_dir: "datasets/"
+  train_path: "datasets_breast/breast_train_GEM_transpose.txt"
+  train_label_path: "datasets_breast/train_labels.txt"
+  test_path: "datasets_breast/breast_test_GEM_transpose.txt"
+  test_label_path: "datasets_breast/test_labels.txt"
+  dir_out: "results"
+  filter: "replace"
+  corerate: 1
+  
+model:
+  class_cond: True
+  dropout: 0.0
+  n_layer: 4
+  n_head: 4
+  feature_size: 64
+  
+diffusion:
+  noise_schedule: cosine
+  # linear_start: -6 
+  # linear_end: 6
+  diffusion_steps: 1000
+  log_every_t: 10
+  
+train:
+  lr: 0.00003
+  # num_epoch: 1
+  batch_size: 64
+  schedule_plot: False
+  # log_interval: 100
+  # save_interval: 1
