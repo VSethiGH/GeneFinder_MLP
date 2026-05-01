@@ -145,9 +145,9 @@ def main(args):
     mean_score = importance_df['rating'].mean()
     std_score = importance_df['rating'].std()
     
-    top_307_df = importance_df.nlargest(307, 'rating')['gene']
+    top_307_df = importance_df.nlargest(args.list_size, 'rating')['gene']
 
-    save_path = os.path.join(args.dir, 'genelist_top307.txt')
+    save_path = os.path.join(args.dir, 'genelist_top_size.txt')
     top_307_df.to_csv(save_path, sep='\t', index=False, header=['#node1'])
 
     """
