@@ -50,7 +50,7 @@ class MLPClassifier(nn.Module):
         
         return x
 
-def load_hallmark_geneset(gmt_path):
+def load_geneset(gmt_path):
     genesets = {}
     with open (gmt_path, 'r') as f:
         for line in f:
@@ -70,7 +70,7 @@ def load_hallmark_geneset(gmt_path):
 def create_chunk_sets(genesets, genes_index, chunk_size, X_train, y_train):
     chunks = []
 
-    # Go through each hallmark set
+    # Go through each geneset set
     for set_name, genes in genesets.items():
         found_genes = [g for g in genes if g in genes_index]    # Looks for all genes in our data
         found_indices = [genes_index[g] for g in found_genes]   # Find the index for corresponding genes
@@ -175,7 +175,7 @@ def main(args):
     test_label_tensor = torch.LongTensor(y_test).reshape(-1, 1)
 
 
-    genesets = load_hallmark_geneset(args.hallmark)
+    genesets = load_geneset(args.geneset)
     gene_names = list(train_data.df.columns)
     genes_index = {gene: i for i, gene in enumerate(gene_names)}
 
@@ -313,7 +313,7 @@ def main(args):
     os.makedirs(args.dir, exist_ok=True)
 
     # Save the model
-    model_path = os.path.join(args.dir, 'hallmark_model.pth')
+    model_path = os.path.join(args.dir, 'geneset_model.pth')
     torch.save(model.state_dict(), model_path)
 
     print(f"Model saved to: {model_path}")
@@ -437,6 +437,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type = str, default="configs/config.yaml")
     parser.add_argument("--dir", type = str, default = None)
-    parser.add_argument("--hallmark", type = str, default = "data/h.all.v2026.1.Hs.symbols.gmt")
+    parser.add_argument("--geneset", type = str, default = "data/h.all.v2026.1.Hs.symbols.gmt")
     args = parser.parse_args()
     main(args)
