@@ -25,10 +25,14 @@ In the "GeneFinder" directory, you will find the files...
     - genelist.txt : Rank gene names in the gene set
     - gene_ranking_[threshold]_percentile.txt : Threshold Percentile of gene names in the gene set
       - Threshold = [25, 50, 75, 90, 95, 99]
-    - gene_importance_dist.png : Graph of importance score distribution (normal, tumor, both) and key line
+    - gene_importance_dist.png : Graph of importance score distribution (normal, tumor, both) and lines for the threshold, mean, and std
+    - log_gene_importance_dist.png : Distribution of logged gene importance 
 
   - Flags:
     - --config : config .yaml path (configs/config.yaml)
     - --dir : output file path (log/), where model and new files are stored
     - --list_size : How long should the file gene list be (307)
-
+   
+# Feature Selection Features  
+- Classification_GeneRanking_Geneset.py
+  - Utilizing a geneset from MSigDB, extract certain features, creates an MLP model saved to   
