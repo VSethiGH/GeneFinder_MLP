@@ -387,7 +387,7 @@ def main(args):
     
     # Save Gene Ranking (Gene + Score)train_dataset.df.columns
     importance_df = importance_df.sort_values(by='rating', ascending=False)
-    save_path = os.path.join(args.dir, 'gene_ranking_Hall.csv')
+    save_path = os.path.join(args.dir, 'gene_ranking_Geneset.csv')
     importance_df.to_csv(save_path, sep='\t', index=False)
 
     mean_score = importance_df['rating'].mean()
@@ -399,7 +399,7 @@ def main(args):
     top_307_df = importance_df[importance_df['rating'] >= threshold]['gene']
     #top_307_df = importance_df.nlargest(307, 'rating')['gene']
 
-    save_path = os.path.join(args.dir, 'genelist_top_std_Hall.txt')
+    save_path = os.path.join(args.dir, 'genelist_top_std_Geneset.txt')
     top_307_df.to_csv(save_path, sep='\t', index=False, header=['#node1'])
 
 
