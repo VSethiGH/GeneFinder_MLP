@@ -35,4 +35,31 @@ In the "GeneFinder" directory, you will find the files...
    
 # Feature Selection Features  
 - Classification_GeneRanking_Geneset.py
-  - Utilizing a geneset from MSigDB, extract certain features, creates an MLP model saved to   
+  - Utilizing a geneset from MSigDB, extract certain features, creates an MLP model saved to 'geneset_model.pth'
+    
+  - Outputs:
+    - gene_ranking_Geneset.csv : CSV file ranking all features
+    - genelist_top_std_Geneset.txt : Top list_size (1 std + mean) gene names in the gene set
+    - gene_importance_dist.png : Graph of importance score distribution (normal, tumor, both) and lines for the threshold, mean, and std
+    - log_gene_importance_dist.png : Distribution of logged gene importance
+      
+  - Flags:
+    - --config : config .yaml path (configs/config.yaml)
+    - --dir : output file path (log/), where model and new files are stored
+    - --geneset : Location of MSigDB geneset ("data/h.all.v2026.1.Hs.symbols.gmt")
+
+# Data Analysis
+
+## Venn Diagrams & Fisher's Exact Test
+- 
+
+## Gene Enrichment 
+- When you have a selected gene set... got to https://toppgene.cchmc.org/
+- Afterwards, click "ToppFun"
+- Enter all genes in "Enrichment Gene Set" --> submit --> start
+- "Download All" training results
+- Copy and Paste the .txt content into an excel sheet
+- Filter the excel sheet for when "q-value FDR B&H" is < e^-10
+ 
+
+## Protein-Protein Interaction
