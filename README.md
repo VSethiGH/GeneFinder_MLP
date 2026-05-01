@@ -1,4 +1,4 @@
-**Data Processing**
+#**Data Processing**
 Please refer to the github repo: https://github.com/feltus/gembuild
 Follow the instructions and Train / Test data (labels and log2 transform data) into the "data" directory
 
@@ -20,7 +20,8 @@ Calls model in Classification_All_Genes.py
 
 Outputs:
 gene_ranking.csv : CSV file ranking all features
-genelist_top307.txt : Top 307 in gene 
+genelist_top_size.txt : Top list_size (flag) genes in the gene set
+
 
 Flags:
 --config : config .yaml path (configs/config.yaml)
