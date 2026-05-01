@@ -51,10 +51,31 @@ In the "GeneFinder" directory, you will find the files...
 # Data Analysis
 
 ## Venn Diagrams & Fisher's Exact Test
-- 
+- In the folder (Data Processing Files)...
+- ComparePercentiles.py
+  
+  - Inputs:
+    - Excel File: File where all the sheets live
+    - Sheet 1 : Universal gene set (all genes)
+    - Sheet 2 : All 19,738 Features in MLP extracted gene set
+    - Sheet 3 : Core geneset 
+    - Sheet 4 : Random geneset
+    - Sheet 5 : Extra Geneset (Typically hallmark or geneset extracted from MSigDB)
+    - Column : Column where all gene sets are at. Make sure they stay consistent throughout (default: A)
+
+  - Creates Venn Diagrams to compare Sheet 2 (307 and each threshold) & 5 (Separately) against Sheet 3 & 4
+  - Conducts Fisher's Exact Test to compare Sheet 2 (307 and each threshold), Sheet 5, Random (1 - 5) against Sheet 3 and 4
+  
+- Overlap.py
+  - Inputs:
+    - Excel File: File where all the sheets live
+    - Sheet 1 : Where all genesets live (Each column is one gene set)
+    - Column Names : gene set columns (comma-separated, e.g. C4,C6,Hallmark)
+   
+  - Creates "Overlap.png" comparing all columns in a Venn Diagram
 
 ## Gene Enrichment 
-- When you have a selected gene set... got to https://toppgene.cchmc.org/
+- When you have a selected gene set... go to https://toppgene.cchmc.org/
 - Afterwards, click "ToppFun"
 - Enter all genes in "Enrichment Gene Set" --> submit --> start
 - "Download All" training results
@@ -63,3 +84,12 @@ In the "GeneFinder" directory, you will find the files...
  
 
 ## Protein-Protein Interaction
+- Protein.py
+- Creates topology graph / emperical p-test accordingly 
+  - Inputs:
+    - Excel File: File where all the sheets live
+    - Sheet 1 : Where all genesets live (Each column is one gene set)
+    - Column Letter 1 : Where geneset 1 lives (Default G for C4)
+    - Column Letter 2 : Where geneset 2 lives (Default I for C6)
+  - Computes topology graph of Col 1, Col 2, Intersection (Col 1 and Col 2), Union - Intersection (Col 1 and Col 2)
+  - Computes topology graph distribution for a random gene set 100 times for the corresponding size (emperical p-test)
