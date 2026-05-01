@@ -301,8 +301,8 @@ def main(args):
 
 
         print(f'Epoch [{epoch + 1}], Train Loss: {avg_loss:.4f}, Val Loss: {val_loss:.4f}')
-        if val_loss > avg_loss * 1.5:  # Val loss significantly higher than train loss
-            print(f"⚠️  Possible overfitting detected at epoch {epoch + 1}")
+        if val_loss > avg_loss * 1.5:
+            print(f"Possible overfitting detected at epoch {epoch + 1}")
         
         #print(f'Epoch [{epoch + 1}], Loss: {avg_loss:.4f}')
 
